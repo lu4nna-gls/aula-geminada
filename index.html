@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Par ou Ímpar?</title>
+
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f4f4f7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background: #fff;
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 320px;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 1.2rem;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 0.6rem;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      transition: border 0.2s;
+    }
+
+    input[type="number"]:focus {
+      border-color: #3b82f6;
+    }
+
+    button {
+      background: #3b82f6;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      width: 100%;
+    }
+
+    button:hover {
+      background: #2563eb;
+    }
+
+    #resultado {
+      margin-top: 1.4rem;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Descubra: Par ou Ímpar?</h1>
+
+    <input
+      id="entrada"
+      type="number"
+      placeholder="Digite um número inteiro"
+      required />
+
+    <button id="verificar">Verificar</button>
+
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    // Seleciona elementos
+    const entrada = document.getElementById("entrada");
+    const botao = document.getElementById("verificar");
+    const resultado = document.getElementById("resultado");
+
+    function verificarParOuImpar() {
+      const valor = parseInt(entrada.value, 10);
+
+      // Validação simples
+      if (isNaN(valor)) {
+        resultado.textContent = "Por favor, digite um número válido.";
+        return;
+      }
+
+      // Checagem de paridade
+      if (valor % 2 === 0) {
+        resultado.textContent = `O número ${valor} é PAR.`;
+      } else {
+        resultado.textContent = `O número ${valor} é ÍMPAR.`;
+      }
+    }
+
+    // Clique no botão
+    botao.addEventListener("click", verificarParOuImpar);
+
+    // Permite apertar Enter dentro do input
+    entrada.addEventListener("keyup", (evt) => {
+      if (evt.key === "Enter") verificarParOuImpar();
+    });
+  </script>
+</body>
+</html>
